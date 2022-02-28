@@ -3,7 +3,7 @@ class Product < ApplicationRecord
   serialize :image, JSON
 
   belongs_to :category
-  belongs_to :cart
+  has_many :carts
 
 
   validates :name, :price , :unit, :category_id, presence: true

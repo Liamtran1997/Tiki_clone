@@ -4,8 +4,8 @@ class Cart < ApplicationRecord
   belongs_to :user
 
   # Cart to Product to Category
-  has_many :products
-  has_many :categories , through: :products
+  belongs_to :product
 
+  # Cart to Oder
   has_one :order
 end

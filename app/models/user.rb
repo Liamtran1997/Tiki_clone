@@ -6,8 +6,8 @@ class User < ApplicationRecord
 
 
   # User to Cart to Order
-  has_one :cart
-  has_one :order, through: :cart
+  has_many :cart
+  # has_one :order, through: :cart
 
   # User to Cart to Product
   has_many :products, through: :cart
