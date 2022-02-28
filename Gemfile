@@ -35,7 +35,6 @@ gem 'jbuilder', '~> 2.5'
 
 
 gem 'devise'
-gem 'bulma-rails'
 gem 'simple_form', '~> 3.5.1'
 gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
 gem 'sidekiq'

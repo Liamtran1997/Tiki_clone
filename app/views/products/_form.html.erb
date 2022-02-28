@@ -1,37 +1,62 @@
-<%= form_with(model: product, local: true) do |form| %>
-  <% if product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<div class="columns">
+  <div class="column is-8 is-centered">
 
-      <ul>
-      <% product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <%= simple_form_for @product, html: { multipart: true } do |f| %>
+      <%= f.error_notification %>
 
-  <div class="field">
-    <%= form.label :category_id %>
-    <%= form.number_field :category_id, id: :product_category_id %>
+      <div class="columns">
+
+        <div class="field column is-9">
+          <div class="control">
+            <%= f.input :category_id , required: true, input_html: { class: "input"}, wrapper: false, label_html: { class:"label" } %>
+          </div>
+        </div>
+
+        <div class="field column is-9">
+          <div class="control">
+            <%= f.input :name , required: true, input_html: { class: "input"}, wrapper: false, label_html: { class:"label" } %>
+          </div>
+        </div>
+
+        <div class="field column">
+          <div class="control">
+            <%= f.input :price, required: true, input_html: { class:"input", maxlength: 8  }, wrapper: false, label_html: { class:"label" } %>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <%= f.input :unit, required: true, input_html: { class:"input", maxlength: 2 }, wrapper: false, label_html: { class:"label" } %>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <label class="label">Add images</label>
+          <div class="file">
+            <label class="file-label">
+              <%= f.input :image, as: :file, input_html: { class:"file-input instrument-image" }, label: false, wrapper: false %>
+              <span class="file-cta">
+                    <span class="file-icon"><i class="fa fa-upload"></i></span>
+                    <span class="file-label">Choose a file…</span>
+                  </span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <output id="list"></output>
+      <hr />
+
+      <div class="field is-grouped">
+        <div class="control">
+          <%= f.button :submit, class: 'button is-warning' %>
+          <%= link_to 'Cancel', products_path, class:'button is-light' %>
+        </div>
+      </div>
+
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :product_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price, id: :product_price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :unit %>
-    <%= form.number_field :unit, id: :product_unit %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
