@@ -1,0 +1,67 @@
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container px-4 px-lg-5">
+    <%= link_to "Tiki_Clone", root_path %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+        <%= link_to "Home", root_path %>
+        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+
+      </ul>
+      <form class="d-flex">
+<!--        <ul class="nav navbar-nav navbar-right collapse navbar-collapse"-->
+<!--            id="bs-example-navbar-collapse-1">-->
+
+          <% if user_signed_in? %>
+            <div class="navbar-item has-dropdown">
+              <% if current_user.admin == true %>
+                <div class="dropdown">
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    Create Stuff
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="<%= new_product_path %>">Create Product</a>
+                    <a class="dropdown-item" href="<%= new_category_path %>">Create Category</a>
+                  </div>
+                </div>
+
+              <% end %>
+              <%= link_to 'Account', edit_user_registration_path, class: "navbar-link" %>
+              <div class="navbar-dropdown is-right">
+                <%= link_to current_user.name, edit_user_registration_path, class:"navbar-item" %>
+                <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"navbar-item" %>
+              </div>
+            </div>
+          <% else %>
+            <p class="control">
+              <%= link_to "Sign In", new_user_session_path, class:"navbar-item button" %>
+            </p>
+            <p class="control">
+              <%= link_to "Sign up", new_user_registration_path, class:"navbar-item button"%>
+            </p>
+          <% end %>
+
+<!--        </ul>-->
+        <button class="btn btn-outline-dark" type="submit">
+          <i class="bi-cart-fill me-1"></i>
+          Cart
+          <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+        </button>
+      </form>
+
+
+
+    </div>
+  </div>
+</nav>
+<!-- Header-->
+<header class="bg-dark py-5">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="text-center text-white">
+      <h1 class="display-4 fw-bolder">Shop Site</h1>
+    </div>
+  </div>
+</header>

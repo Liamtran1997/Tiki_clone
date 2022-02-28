@@ -1,5 +1,26 @@
-<h1>New Category</h1>
+<div class="columns">
+  <div class="column is-8 is-centered">
 
-<%= render 'form', category: @category %>
+    <%= simple_form_for @category, html: { multipart: true } do |f| %>
+      <%= f.error_notification %>
 
-<%= link_to 'Back', categories_path %>
+      <div class="columns">
+
+        <div class="field column is-9">
+          <div class="control">
+            <%= f.input :name , required: true, input_html: { class: "input"}, wrapper: false, label_html: { class:"label" } %>
+          </div>
+        </div>
+
+      </div>
+      <output id="list"></output>
+      <hr />
+      <div class="field is-grouped">
+        <div class="control">
+          <%= f.button :submit, class: 'button is-warning' %>
+          <%= link_to 'Cancel', categories_path, class:'button is-light' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
