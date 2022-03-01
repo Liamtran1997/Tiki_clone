@@ -1,54 +1,40 @@
 <p id="notice"><%= notice %></p>
 
-<!--<div class="instrument-index-grid pt4">-->
-  <%# @products.each do |product| %>
-
-<!--    <div class="product border-light">-->
-<!--      <div class="product-thumb">-->
-        <%#= link_to image_tag(product.image), product %>
-<!--      </div>-->
-
-<!--      <div class="pa3">-->
-<!--        <h3 class="fw7 f4 title"><%#= link_to product.name, product %></h3>-->
-<!--        <p class="f3 fw6 has-text-right pt2 price">Giá tiền : <%#= number_to_currency(product.price) %></p>-->
-<!--        <p class="f3 fw6 has-text-right pt2 unit">Số lượng : <%#= product.unit %></p>-->
-
-        <%# if current_user.admin == true %>
-          <%#= link_to 'Edit', edit_product_path(product), class: "button is-small" %>
-          <%#= link_to 'Delete', product, method: :delete, data: { confirm: "Are you sure ?" }, class: "button is-small" %>
-        <%# end %>
-
-<!--      </div>-->
-<!--    </div>-->
-  <%# end %>
-<!--</div>-->
-
-<%= @products.each do |f| %>
-  <section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
-      <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-
-        <div class="col mb-5">
-          <div class="card h-100">
-            <!-- Product image-->
-            <img class="card-img-top"  alt="..." src="<%= f.image %>" />
-            <!-- Product details-->
-            <div class="card-body p-4">
-              <div class="text-center">
-                <!-- Product name-->
-                <h5 class="fw-bolder"><%= f.name %></h5>
-                <!-- Product price-->
-                <%= f.price %>
+<div class="container px-4 px-lg-5 mt-5">
+<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+  <%= will_paginate(@products, :renderer => WillPaginate::ActionView::LinkRenderer) %>
+  <%= @products.each do |f| %>
+    <div class="col mb-5">
+              <div class="card h-100">
+                <!-- Product image-->
+                <img class="card-img-top" src="<%= f.image %>" />
+                <!-- Product details-->
+                <div class="card-body p-4">
+                  <div class="text-center">
+                    <!-- Product name-->
+                    <h5 class="fw-bolder"><%= f.name%></h5>
+                    <!-- Product price-->
+                    <%= 'Giá tiền : ' + number_to_currency(f.price) %>
+                  </div>
+                </div>
+                <!-- Product actions-->
+                <% if current_user.admin == true %>
+                  <center>
+                  <%= link_to 'Edit', edit_product_path(f), class: "button is-small" %>
+                  <%= link_to 'Delete', f, method: :delete, data: { confirm: "Are you sure ?" },
+                              class: "button is-small" %>
+                  </center>
+                  <% else %>
+                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center">
+                      <a class="btn btn-outline-dark mt-auto" href="#">Add To Cart</a>
+                    </div>
+                  </div>
+                  <%end%>
               </div>
-            </div>
-            <!-- Product actions-->
-            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-              <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add To Cart</a></div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-<%end%>
+  </div>
+  <%end%>
+  <%#= will_paginate @products, :renderer => WillPaginate::ActionView::LinkRenderer  , previous_label: 'Older', next_label: 'Newer', inner_window: 1, outer_window: 0 %>
+  <%= will_paginate(@products, :renderer => WillPaginate::ActionView::LinkRenderer) %>
+</div>
+</div>

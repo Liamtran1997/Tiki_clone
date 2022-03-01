@@ -4,8 +4,9 @@
   <head>
     <%= render 'layouts/head_default' %>
   </head>
-  <body>
 
+
+  <body>
     <% if flash[:notice] %>
       <div class="notification is-success global-notification">
         <p class="notice"><%= notice %></p>
@@ -16,9 +17,12 @@
         <p class="alert"><%= alert %></p>
       </div>
     <% end %>
+
     <%= render 'layouts/header' %>
-    <%#= render 'layouts/section' %>
+
     <%= yield %>
-    <% render 'layouts/footer' %>
+
+    <%= render 'layouts/footer' %>
+
   </body>
 </html>
