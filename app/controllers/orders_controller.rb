@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
-    @order = Order.new
+    @order = current_cart.Order.build
   end
 
   # GET /orders/1/edit
@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
 
   # POST /orders or /orders.json
   def create
-    @order = Order.new(order_params)
+    @order = current_cart.Order.build(order_params)
 
     respond_to do |format|
       if @order.save

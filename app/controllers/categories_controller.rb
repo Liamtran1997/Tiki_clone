@@ -1,5 +1,8 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ show edit update destroy ]
+  before_action :authenticate_user! do
+    redirect_to root_path unless current_user.admin == true
+  end
 
   # GET /categories or /categories.json
   def index
@@ -12,7 +15,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/new
   def new
-    @category = Category.new
+      @category = Category.new
   end
 
   # GET /categories/1/edit
@@ -21,7 +24,7 @@ class CategoriesController < ApplicationController
 
   # POST /categories or /categories.json
   def create
-    @category = Category.new(category_params)
+      @category = Category.new(category_params)
 
     respond_to do |format|
       if @category.save

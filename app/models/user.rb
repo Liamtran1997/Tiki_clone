@@ -5,10 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
 
-  # User to Cart to Order
-  has_many :cart
-  # has_one :order, through: :cart
+  has_many :line_items
+  has_many :products, through: :line_items
+  has_many :carts, through: :line_items
 
-  # User to Cart to Product
-  has_many :products, through: :cart
 end

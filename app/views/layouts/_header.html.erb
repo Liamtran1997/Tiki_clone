@@ -1,7 +1,7 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container px-4 px-lg-5">
-    <%= link_to image_tag("2hand.jpg", size: "150x100"), root_path %>
+    <%= link_to image_tag("roundtwo.jpg", size: "200x120"), root_path %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span></button>
@@ -17,13 +17,13 @@
             <li class="nav-item dropdown">
               <% if current_user.admin == true %>
                 <div class="dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                  <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Create Stuff
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="<%= new_product_path %>">Create Product</a>
-                    <a class="dropdown-item" href="<%= new_category_path %>">Create Category</a>
+                    <a class="dropdown-item" href="<%= new_product_path %>">Create New Product</a>
+                    <a class="dropdown-item" href="<%= new_category_path %>">Create New Category</a>
                   </div>
                 </div>
               <% end %>
@@ -52,11 +52,21 @@
           <% end %>
 
         </ul>
-        <button class="btn btn-outline-dark" type="submit">
-          <i class="bi-cart-fill me-1"></i>
-          Cart
-          <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-        </button>
+        <%# if total_cart_items %>
+          <%#= link_to cart_path(@cart), class:"navbar-item button is-warning" do %>
+<!--              <span class="icon is-small">-->
+<!--                <i class="fa fa-shopping-cart"></i>-->
+<!--              </span>-->
+<!--            <span>Cart-->
+              <%#= cart_count_over_one %>
+<!--                </span>-->
+          <%# end %>
+        <%# end %>
+          <button class="btn btn-outline-dark" type="submit" href="">
+            <i class="bi-cart-fill me-1"></i>
+            Cart
+            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+          </button>
       </form>
 
 

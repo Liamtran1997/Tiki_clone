@@ -47,6 +47,7 @@
     <orderEntry type="library" scope="PROVIDED" name="builder (v3.2.4, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v1.17.2, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="byebug (v11.1.3, rbenv: 2.6.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="cancancan (v3.3.0, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="capybara (v3.36.0, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="carrierwave (v1.3.2, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="childprocess (v4.1.0, rbenv: 2.6.3) [gem]" level="application" />
@@ -72,6 +73,7 @@
     <orderEntry type="library" scope="PROVIDED" name="guard-livereload (v2.5.2, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="http_parser.rb (v0.8.0, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.10.0, rbenv: 2.6.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="impressionist (v1.6.1, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jbuilder (v2.11.5, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jquery-rails (v4.4.0, rbenv: 2.6.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="listen (v3.1.5, rbenv: 2.6.3) [gem]" level="application" />
@@ -151,7 +153,9 @@
     <option name="generators">
       <list>
         <option value="active_record:devise" />
+        <option value="active_record:impressionist" />
         <option value="assets" />
+        <option value="cancan:ability" />
         <option value="channel" />
         <option value="coffee:assets" />
         <option value="controller" />
@@ -161,6 +165,7 @@
         <option value="devise:views" />
         <option value="generator" />
         <option value="helper" />
+        <option value="impressionist:impressionist" />
         <option value="integration_test" />
         <option value="jbuilder" />
         <option value="job" />
@@ -168,7 +173,9 @@
         <option value="mailer" />
         <option value="migration" />
         <option value="model" />
+        <option value="mongo_mapper:impressionist" />
         <option value="mongoid:devise" />
+        <option value="mongoid:impressionist" />
         <option value="resource" />
         <option value="responders:install" />
         <option value="responders_controller" />
@@ -186,7 +193,9 @@
     <option name="myGenerators">
       <list>
         <option value="active_record:devise" />
+        <option value="active_record:impressionist" />
         <option value="assets" />
+        <option value="cancan:ability" />
         <option value="channel" />
         <option value="coffee:assets" />
         <option value="controller" />
@@ -196,6 +205,7 @@
         <option value="devise:views" />
         <option value="generator" />
         <option value="helper" />
+        <option value="impressionist:impressionist" />
         <option value="integration_test" />
         <option value="jbuilder" />
         <option value="job" />
@@ -203,7 +213,9 @@
         <option value="mailer" />
         <option value="migration" />
         <option value="model" />
+        <option value="mongo_mapper:impressionist" />
         <option value="mongoid:devise" />
+        <option value="mongoid:impressionist" />
         <option value="resource" />
         <option value="responders:install" />
         <option value="responders_controller" />
