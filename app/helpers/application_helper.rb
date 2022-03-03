@@ -1,13 +1,15 @@
 module ApplicationHelper
 
   def cart_count_over_one
-    total_cart_items if total_cart_items > 0
+    if cart_has_items
+      "<span class='text-primary'>#{cart_has_items}</span>".html_safe
+    end
   end
 
-  def total_cart_items
-    total = Cart.quantity
+
+  def cart_has_items
+    total = @cart.line_items.map{ |item| item.quantity }.sum #error occurs here
     total if total > 0
   end
-
 
 end

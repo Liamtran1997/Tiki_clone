@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :line_items
   resources :orders
-  resources :carts, only: [:show, :update, :destroy]
+  resources :carts
   devise_for :users, controllers: {
     registrations: 'registrations'
   }

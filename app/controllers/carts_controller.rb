@@ -11,7 +11,6 @@ class CartsController < ApplicationController
 
   # GET /carts/1 or /carts/1.json
   def show
-    @cart = current_cart.Cart
   end
 
   # GET /carts/new
@@ -53,10 +52,11 @@ class CartsController < ApplicationController
 
   # DELETE /carts/1 or /carts/1.json
   def destroy
-    @cart.destroy
+    @cart.destroy if @cart.id == session[:cart_id]
+    session[:cart_id] = nil
 
     respond_to do |format|
-      format.html { redirect_to carts_url, notice: "Cart was successfully destroyed." }
+      format.html { redirect_to root_path, notice: "Cart was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -69,7 +69,7 @@ class CartsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cart_params
-      params.require(:cart).permit(:user_id, :product_id, :quantity, :time, :total)
+      params.require(:cart).permit(:user_id, :product_id, :quantity, :total, :price)
     end
 
     def invalid_cart #

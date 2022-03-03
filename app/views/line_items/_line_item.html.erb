@@ -1,0 +1,30 @@
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<td data-th="Product">
+  <div class="row">
+    <div class="col-md-3 text-left">
+      <%=  image_tag (line_item.product.image), class: "img-fluid d-none d-md-block rounded mb-2 shadow"%>
+    </div>
+    <div class="col-md-9 text-left mt-sm-2">
+      <h4>Product Name</h4>
+      <p class="font-weight-light"><%= line_item.product.name %></p>
+    </div>
+  </div>
+</td>
+<td data-th="Price"><%= line_item.product.price %></td>
+
+<td data-th="Quantity">
+  <input type="number" class="form-control form-control-lg text-center" value="1">
+</td>
+
+
+<td class="actions" data-th="">
+  <div class="text-right">
+    <button class="btn btn-white border-secondary bg-white btn-md mb-2">
+      <i class="fas fa-sync"></i>
+    </button>
+    <button class="btn btn-white border-secondary bg-white btn-md mb-2">
+      <%= link_to 'Remove Item', line_item_path, method: :delete, data: { confirm: "Are you sure? " }%>
+    </button>
+  </div>
+</td>
+</tr>

@@ -1,7 +1,7 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container px-4 px-lg-5">
-    <%= link_to image_tag("roundtwo.jpg", size: "200x120"), root_path %>
+    <%= link_to image_tag("eyes.jpg", size: "200x120"), root_path %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span></button>
@@ -52,24 +52,17 @@
           <% end %>
 
         </ul>
-        <%# if total_cart_items %>
-          <%#= link_to cart_path(@cart), class:"navbar-item button is-warning" do %>
-<!--              <span class="icon is-small">-->
-<!--                <i class="fa fa-shopping-cart"></i>-->
-<!--              </span>-->
-<!--            <span>Cart-->
-              <%#= cart_count_over_one %>
-<!--                </span>-->
-          <%# end %>
-        <%# end %>
-          <button class="btn btn-outline-dark" type="submit" href="">
+
+          <%= link_to cart_path(@cart), class:"btn btn-outline-dark" do %>
             <i class="bi-cart-fill me-1"></i>
-            Cart
-            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-          </button>
+              <span class="icon is-small">
+              </span>
+            <span>Cart
+              <%#= cart_count_over_one %>
+            </span>
+          <% end %>
+
       </form>
-
-
 
     </div>
   </div>
@@ -79,7 +72,11 @@
 <header class="bg-dark py-5">
   <div class="container px-4 px-lg-5 my-5">
     <div class="text-center text-white">
-      <h1 class="display-4 fw-bolder">Welcome To Shopping Site</h1>
+      <h1 class="display-4 fw-bolder">
+<!--        <a href="http://stackoverflow.com">-->
+<!--        <img src="banner.png" alt="Stack" />-->
+<!--        </a>-->
+      </h1>
     </div>
   </div>
 </header>

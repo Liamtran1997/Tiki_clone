@@ -16,11 +16,8 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
-    if current_user.admin == true
-      @product = current_user.products.build
-    else
-      redirect_to root_path, alert:"Not authorized"
-    end
+    is_admin?
+    @product = Product.new
   end
 
   # GET /products/1/edit
@@ -30,11 +27,9 @@ class ProductsController < ApplicationController
 
   # POST /products or /products.json
   def create
-    if current_user.admin == true
-      @product = current_user.products.build(product_params)
-    else
-      redirect_to root_path, alert:"Not authorized"
-    end
+    is_admin?
+    @product = @product = Product.new(product_params)
+
     respond_to do |format|
       if @product.save
         format.html { redirect_to product_url(@product), notice: "Product was successfully created." }
