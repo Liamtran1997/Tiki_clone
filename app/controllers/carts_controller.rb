@@ -1,7 +1,9 @@
 class CartsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
   before_action :set_cart, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!do
+    redirect_to root_path unless current_user.admin == false
+  end
 
 
   # GET /carts or /carts.json
@@ -15,7 +17,7 @@ class CartsController < ApplicationController
 
   # GET /carts/new
   def new
-    @cart = Cart.new
+    @cart = current_user.cart.build
   end
 
   # GET /carts/1/edit
@@ -24,7 +26,7 @@ class CartsController < ApplicationController
 
   # POST /carts or /carts.json
   def create
-    @cart = Cart.new(cart_params)
+    @cart = current_user.cart.build(cart_params)
 
     respond_to do |format|
       if @cart.save
@@ -59,6 +61,12 @@ class CartsController < ApplicationController
       format.html { redirect_to root_path, notice: "Cart was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def authenticate_user!
+    # code here
   end
 
   private

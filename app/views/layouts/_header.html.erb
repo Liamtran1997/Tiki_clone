@@ -52,16 +52,14 @@
           <% end %>
 
         </ul>
-
           <%= link_to cart_path(@cart), class:"btn btn-outline-dark" do %>
             <i class="bi-cart-fill me-1"></i>
               <span class="icon is-small">
               </span>
             <span>Cart
-              <%#= cart_count_over_one %>
+              <%= cart_count_over_one %>
             </span>
           <% end %>
-
       </form>
 
     </div>
@@ -69,13 +67,11 @@
 </nav>
 
 <!-- Header-->
-<header class="bg-dark py-5">
+<header class="bg-dark">
   <div class="container px-4 px-lg-5 my-5">
     <div class="text-center text-white">
       <h1 class="display-4 fw-bolder">
-<!--        <a href="http://stackoverflow.com">-->
-<!--        <img src="banner.png" alt="Stack" />-->
-<!--        </a>-->
+          <%= image_tag("b.jpg") %>
       </h1>
     </div>
   </div>

@@ -4,6 +4,7 @@ class CategoriesController < ApplicationController
     redirect_to root_path unless current_user.admin == true
   end
 
+
   # GET /categories or /categories.json
   def index
     @categories = Category.all

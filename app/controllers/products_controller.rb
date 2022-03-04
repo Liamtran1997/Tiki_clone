@@ -1,13 +1,14 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
-  before_action :authenticate_user! , only: [:show, :index]
+  before_action :authenticate_user!, only: [:show, :index]
 
   impressionist actions: [:show, :index], unique: [:impressionable_type, :impressionable_id, :session_hash]
 
 
   # GET /products or /products.json
   def index
-    @products = Product.all.order('created_at desc').paginate(page: params[:page], per_page: 4)
+    @products = Product.all.order('created_at desc').paginate(page: params[:page], per_page: 5
+    )
   end
 
   # GET /products/1 or /products/1.json
@@ -17,7 +18,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     is_admin?
-    @product = Product.new
+    @product = current_user.product.build
   end
 
   # GET /products/1/edit
@@ -28,7 +29,7 @@ class ProductsController < ApplicationController
   # POST /products or /products.json
   def create
     is_admin?
-    @product = @product = Product.new(product_params)
+    @product  = current_user.product.build(product_params)
 
     respond_to do |format|
       if @product.save
@@ -56,11 +57,8 @@ class ProductsController < ApplicationController
 
   # DELETE /products/1 or /products/1.json
   def destroy
-    if current_user.admin == true
+      is_admin?
       @product.destroy
-    else
-      redirect_to root_path, alert:"Not authorized"
-    end
 
     respond_to do |format|
       format.html { redirect_to products_url, notice: "Product was successfully destroyed." }

@@ -6,7 +6,6 @@ class Product < ApplicationRecord
   is_impressionable
 
 
-  belongs_to :user, optional: true
   belongs_to :category
 
   has_many :line_items
@@ -16,6 +15,7 @@ class Product < ApplicationRecord
   validates :name, :price , :unit, :category_id, presence: true
 
 
+  private
   def not_referenced
     unless line_items.empty?
       errors.add(:base, "Line Items Present")
