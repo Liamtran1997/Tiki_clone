@@ -1,78 +1,40 @@
-<!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container px-4 px-lg-5">
-    <%= link_to image_tag("eyes.jpg", size: "200x120"), root_path %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-      </ul>
-      <form class="d-flex">
-        <ul class="nav navbar-nav navbar-right collapse navbar-collapse"
-            id="bs-example-navbar-collapse-1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-          <% if user_signed_in? %>
 
-            <li class="nav-item dropdown">
-              <% if current_user.admin == true %>
-                <div class="dropdown">
-                  <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
-                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Create Stuff
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="<%= new_product_path %>">Create New Product</a>
-                    <a class="dropdown-item" href="<%= new_category_path %>">Create New Category</a>
-                  </div>
-                </div>
-              <% end %>
-            </li>
+<header class="container">
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
 
-            <li class="nav-item dropdown">
-                <div class="dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <%= current_user.name %>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="<%= edit_user_registration_path %>">Profile</a>
-                    <a class="dropdown-item" ><%= link_to "Logout", destroy_user_session_path, method: :delete %></a>
-                  </div>
-                </div>
-            </li>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <%= image_tag("t.webp", style: "width:100%;height:auto;") %>
+    </div>
 
-          <% else %>
-            <p class="control">
-              <%= link_to "Sign In", new_user_session_path, class:"navbar-item button" %>
-            </p>
-            <p class="control">
-              <%= link_to "Sign up", new_user_registration_path, class:"navbar-item button"%>
-            </p>
-          <% end %>
+    <div class="item">
+      <%= image_tag("tiki1.webp", style: "width:100%;height:auto;") %>
+    </div>
 
-        </ul>
-          <%= link_to cart_path(@cart), class:"btn btn-outline-dark" do %>
-            <i class="bi-cart-fill me-1"></i>
-              <span class="icon is-small">
-              </span>
-            <span>Cart
-              <%= cart_count_over_one %>
-            </span>
-          <% end %>
-      </form>
-
+    <div class="item">
+      <%= image_tag("tiki2.webp", style: "width:100%;height:auto;") %>
     </div>
   </div>
-</nav>
 
-<!-- Header-->
-<header class="bg-dark">
-  <div class="container px-4 px-lg-5 my-5">
-    <div class="text-center text-white">
-      <h1 class="display-4 fw-bolder">
-          <%= image_tag("b.jpg") %>
-      </h1>
-    </div>
-  </div>
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 </header>

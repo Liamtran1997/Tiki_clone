@@ -63,11 +63,6 @@ class CartsController < ApplicationController
     end
   end
 
-  private
-
-  def authenticate_user!
-    # code here
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

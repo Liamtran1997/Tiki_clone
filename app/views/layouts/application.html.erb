@@ -5,8 +5,8 @@
     <%= render 'layouts/head_default' %>
   </head>
 
-
   <body>
+
     <% if flash[:notice] %>
       <div class="notification is-success global-notification">
         <p class="notice"><%= notice %></p>
@@ -17,6 +17,8 @@
         <p class="alert"><%= alert %></p>
       </div>
     <% end %>
+    <%= render 'layouts/navigation' %>
+
     <%= render 'layouts/header' %>
 
     <%= yield %>

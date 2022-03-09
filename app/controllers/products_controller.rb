@@ -18,7 +18,8 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     is_admin?
-    @product = current_user.product.build
+    # @product = current_user.product.build
+    @product = Product.new
   end
 
   # GET /products/1/edit
@@ -29,7 +30,8 @@ class ProductsController < ApplicationController
   # POST /products or /products.json
   def create
     is_admin?
-    @product  = current_user.product.build(product_params)
+    # @product  = current_user.product.build(product_params)
+     @product = Product.new(product_params)
 
     respond_to do |format|
       if @product.save

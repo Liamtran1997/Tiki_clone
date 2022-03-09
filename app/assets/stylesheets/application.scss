@@ -9,15 +9,14 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
  *= require_tree .
  */
 
+
+// Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+
 @import "carts";
-/* ==========================================
-    FOR DEMO PURPOSE
-  ========================================== */
 
 
 body {
@@ -138,6 +137,7 @@ body, html {
 
 body {
   margin: 0;
+  display: block !important;
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
