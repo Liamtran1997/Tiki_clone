@@ -6,7 +6,12 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'registrations'
   }
-  resources :products
+  resources :products do
+    member do
+      put 'like', to: "products#like"
+      put 'unlike', to: "products#unlike"
+    end
+  end
 
   resources :categories
   post "checkout/create", to: "checkout#create"

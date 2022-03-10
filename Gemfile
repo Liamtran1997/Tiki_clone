@@ -44,6 +44,7 @@ gem 'stripe', '~> 3.11'
 gem 'trix', '~> 0.11.1'
 gem 'cancancan'
 gem 'impressionist', '~>1.6.1'
+gem 'acts_as_votable'
 
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'

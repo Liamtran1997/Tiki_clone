@@ -1,6 +1,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="container px-4 px-lg-5 mt-5">
 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+  <%= render 'layouts/header' %>
+
   <%= will_paginate(@products, :renderer => WillPaginate::ActionView::LinkRenderer) %>
   <%= @products.each do |f| %>
     <div class="col mb-5">
@@ -13,7 +16,33 @@
                   <div class="text-center">
                     <!-- Product name-->
                     <span class="icon"><%=f.impressionist_count %>
-                      <i class="fa fa-eye" aria-hidden="true"></i></span>
+                      <i class="fa fa-eye " aria-hidden="true"></i></span>
+
+                    <% if user_signed_in? %>
+
+                      <% if current_user.liked? f %>
+
+                        <%= link_to unlike_product_path(f), method: :put, class: "unlike_product" do %>
+                          <span class="icon"><i class="fa fa-heart has-text-primary"></i></span>
+                          <span class="vote_count"><%= f.get_likes.size %></span>
+                        <% end %>
+                      <% else %>
+
+                        <%= link_to like_product_path(f), method: :put, class: "like_product" do %>
+                          <span class="icon"><i class="fa fa-heart"></i></span>
+                          <span class="vote_count"><%= f.get_likes.size %></span>
+                        <% end %>
+                      <% end %>
+                    <% else %>
+
+                      <%= link_to like_shot_path(f), method: :put, class: "like_product" do %>
+                        <span class="icon"><i class="fa fa-heart"></i></span>
+                        <span class="vote_count"><%= f.get_likes.size %></span>
+                      <% end %>
+
+                    <% end %>
+
+
                     <h5 class="fw-bolder"><%= link_to f.name, product_path(f)%></h5>
                     <!-- Product price-->
                     <%= 'Giá tiền : ' + number_to_currency(f.price) %>

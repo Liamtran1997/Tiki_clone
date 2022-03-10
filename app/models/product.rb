@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  # Like + Heart Rating
+  acts_as_votable
 
   before_destroy :not_referenced
   mount_uploader :image, ImageUploader
