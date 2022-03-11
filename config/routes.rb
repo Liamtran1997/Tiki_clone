@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     registrations: 'registrations'
   }
   resources :products do
+    resources :comments
     member do
       put 'like', to: "products#like"
       put 'unlike', to: "products#unlike"

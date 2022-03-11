@@ -13,6 +13,7 @@ class Product < ApplicationRecord
   has_many :line_items
   has_many :carts , through: :line_items
 
+  has_many :comments, dependent: :destroy
 
   validates :name, :price , :unit, :category_id, presence: true
 
