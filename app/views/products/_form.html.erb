@@ -1,8 +1,8 @@
 <%= simple_form_for @product, html: { multipart: true } do |f| %>
   <%= f.error_notification %>
-
-  <div class="form-row">
-    <div class="form-group col-md-6">
+  <div class="container text-center">
+  <div class="form-row ">
+    <div class="form-group col-md-12">
       <%= f.input :category_id, required: false, input_html: { class: "input"}, wrapper: false, label_html:
         { class:"label" }, placeholder: "Category ID"%>
     </div>
@@ -10,14 +10,14 @@
   </div>
 
   <div class="form-row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-12">
       <%= f.input :name , required: false, input_html: { class: "input"}, wrapper: false, label_html:
         { class:"label" } , placeholder: "Name" %>
     </div>
   </div>
 
   <div class="form-row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-12">
       <%= f.input :price, required: false, input_html: { class:"input", maxlength: 8  }, wrapper: false, label_html:
         { class:"label" } , placeholder: "Price" %>
     </div>
@@ -25,7 +25,7 @@
 
 
   <div class="form-row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-12">
       <%= f.input :unit, required: false , input_html: { class:"input", maxlength: 2 }, wrapper: false, label_html:
         { class:"label" } , placeholder: "Unit" %>
     </div>
@@ -45,6 +45,5 @@
       <%= link_to 'Cancel', products_path, class:'button is-light' %>
     </div>
   </div>
-
-
 <% end %>
+</div>

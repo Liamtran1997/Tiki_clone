@@ -1,56 +1,79 @@
-<section class="section">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-4">
-
-        <h2 class="title is-2">Edit <%= resource_name.to_s.humanize %></h2>
-        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-          <%= f.error_notification %>
-
-          <div class="field">
-            <div class="control">
-              <%= f.input :name, required: true, autofocus: true, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
-            </div>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= f.error_notification %>
+<div class="container">
+  <div class="card">
+    <div class="card-header text-center">
+      <h3><i class="fa-solid fa-address-card"></i>  Edit User</h3>
+    </div>
+    <div class="card-body">
+      <form action="">
+        <div class="row">
+          <div class="form-group col-6  ">
+            <i class="fa-solid fa-user"></i>
+            <label for="">Name :</label>
+            <br>
+            <%= f.input :name, required: false, autofocus: true, input_html: { class: "input col-7"},
+                        wrapper: false, label: false,placeholder: "UserName"%>
           </div>
-
-          <div class="field">
-            <div class="control">
-              <%= f.input :email, required: true, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
-            </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-6">
+            <i class="fa-solid fa-envelope"></i>
+            <label for="">Email :</label>
+            <br>
+            <%= f.input :email, required: false, input_html: { class: "input col-7"}, wrapper: false,
+                        label: false, placeholder: "User Email" %>
           </div>
-
-          <div class="field">
-            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-              <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-            <% end %>
+        </div>
+        <div class="row">
+          <div class="form-group col-6">
+            <i class="fa-solid fa-key"></i>
+            <label for="">Password :</label>
+            <br>
+            <%= f.input :password, autocomplete: "off", required: false, input_html: { class: "input col-7"},
+                        wrapper: false, label: false, placeholder: "Password" %>
+            <small class="form-text text-muted">leave it blank if you don't want to change it</small>
           </div>
-
-          <div class="field">
-            <div class="control">
-              <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
-            </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-6">
+            <i class="fa-solid fa-key"></i>
+            <label for="">Password Confirmation :</label>
+            <br>
+            <%= f.input :password_confirmation, required: false, input_html: { class: "input col-7"},
+                        wrapper: false, label: false, placeholder: "Password Confirmation" %>
           </div>
-
-          <div class="field">
-            <div class="control">
-              <%= f.input :password_confirmation, required: false, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
-            </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-6">
+            <i class="fa-solid fa-key"></i>
+            <label for="">Current Password :</label>
+            <br>
+            <%= f.input :current_password, required: false , input_html: { class: "input col-7"},
+                        wrapper: false, label: false, placeholder: "Current Password"%>
+            <small class="form-text text-muted">we need your current password to confirm your changes
+            </small>
           </div>
+        </div>
 
-          <div class="field">
-            <div class="control">
-              <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
-            </div>
+        <div class="row">
+          <div class="form-group col-5 text-center">
+            <%= f.button :submit, "Update", class: 'btn btn-primary' %>
+<!--            <button type="submit" class="btn btn-default">-->
+<!--              <i class="fas fa-save"></i> Update-->
+<!--            </button>-->
+            <button type="submit" class="btn btn-danger" >
+              <i class="fas fa-times-circle"></i>
+              <%= link_to "Cancel", edit_user_registration_path, class:"btn-danger"%>
+            </button>
           </div>
-
-          <%= f.button :submit, "Update", class:"button is-warning" %>
-        <% end %>
-
-        <hr />
-        <h3 class="title is-5">Cancel my account</h3>
-        <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-      </div>
+        </div>
+      </form>
+    </div>
+<% end %>
+    <div class="card-footer text-center">
+      <h3 class="title is-5">Cancel my account</h3>
+      <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
     </div>
   </div>
-</section>
+</div>

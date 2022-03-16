@@ -1,23 +1,45 @@
-<div class="box">
-  <article class="media">
-    <figure class="media-left">
-      <p class="image is-48x48 user-thumb">
-        <%= gravatar_image_tag(comment.user.email.gsub('spam', 'mdeering'), alt: comment.user.name, gravatar: { size: 48 }) %>
-      </p>
-    </figure>
-    <div class="media-content">
-      <div class="content">
-        <p>
-          <strong><%= comment.user.name %></strong>
-        <div><%= comment.response %></div>
-        </p>
+  <div class="d-flex justify-content-center row">
+    <div class="col-md-12">
+      <div class="p-3 bg-white rounded">
+        <div class="review mt-4">
+          <div class="d-flex flex-row comment-user">
+            <img class="rounded"
+                 src="<%= gravatar_image_url(comment.user.email.gsub('spam', 'mdeering'), alt: comment.user.name)
+                 %>" width="50" height="50">
+            <div class="ml-2">
+              <div class="d-flex flex-row align-items-center">
+                <span class="name font-weight-bold"><strong><%= comment.user.name %></strong></span>
+                <span class="date ml-3"><small>Commented <%= time_ago_in_words(comment.created_at) %> ago.</small></span>
+              </div>
+              <div class="rating">
+
+                  <% if current_user.liked? comment%>
+                    <%= link_to unlike_product_comment_path(@product, comment), method: :put, class: "unlike_comment" do %>
+                      <span class="icon"><i class="fa fa-heart has-text-primary" style="color: deeppink"></i></span>
+                      <span class="vote_count" style="color: deeppink"><%= comment.get_likes.size %></span>
+                    <% end %>
+                  <% else %>
+                    <%= link_to like_product_comment_path(@product, comment), method: :put, class: "like_comment" do %>
+                      <span class="icon"><i class="fa fa-heart" style="color: deeppink"></i></span>
+                      <span class="vote_count" style="color: deeppink"><%= comment.get_likes.size %></span>
+                    <% end %>
+                  <% end %>
+
+                <% if(user_signed_in? && (current_user.id == comment.user_id)) %>
+                  <%= link_to  [comment.product, comment],
+                              method: :delete, data: { confirm: 'Are you sure?' } do %>
+                    <i class="fa-solid fa-trash-can float-right" style="color: gray"></i>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="mt-2">
+            <p class="comment-text">
+              <%= comment.response %>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
-
-    <% if(user_signed_in? && (current_user.id == comment.user_id)) %>
-      <%= link_to 'Delete', [comment.product, comment],
-                  method: :delete, class: "button is-danger", data: { confirm: 'Are you sure?' } %>
-    <% end %>
-
-  </article>
-</div>
+  </div>

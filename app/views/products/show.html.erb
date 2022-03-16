@@ -1,6 +1,5 @@
 <main class="mt-5 pt-4">
   <div class="container dark-grey-text mt-5">
-
     <!--Grid row-->
     <div class="row wow fadeIn">
 
@@ -10,8 +9,6 @@
         <img src="<%= @product.image %>" width="400" height="300" class="img-fluid" alt="">
 
       </div>
-      <!--Grid column-->
-
       <!--Grid column-->
       <div class="col-md-6 mb-4">
 
@@ -31,19 +28,29 @@
 
           <p class="lead font-weight-bold"><%= @product.name %></p>
 
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero eos atque quia ipsa
-            sint voluptatibus!
-            Beatae sit assumenda asperiores iure at maxime atque repellendus maiores quia sapiente.</p>
+          <p>Each seasonal collection presents footwear, apparel and accessories designs inspired by genuine
+            artisanship from around the world; a reinterpretation of skills inherited and taught by hand and the heart,
+            passed from one generation to another.</p>
           <%= button_to 'Add to cart', line_items_path(product_id: @product),method: :post,
                         class: 'btn btn-primary btn-md my-0 p' %>
-
 
         </div>
         <!--Content-->
 
       </div>
       <!--Grid column-->
-
+    </div>
+    <div class="row">
+      <div class="col-8">
+        <div class="card">
+          <div class="p-3">
+            <h6>Comments :</h6>
+            <%= render @product.comments %>
+          </div>
+            <%= render 'comments/form' %>
+        </div>
+      </div>
     </div>
   </div>
+
 </main>
