@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ show edit update destroy ]
-  before_action :authenticate_user! do
+
+  before_action :authenticate_user!, except: [:product_from_category] do
     redirect_to root_path unless current_user.admin == true
   end
 
