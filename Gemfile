@@ -35,6 +35,10 @@ gem 'jbuilder', '~> 2.5'
 
 
 gem 'devise'
+gem "omniauth"
+gem "omniauth-facebook"
+gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+gem "omniauth-rails_csrf_protection"
 gem 'simple_form', '~> 3.5.1'
 gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
 gem 'sidekiq'

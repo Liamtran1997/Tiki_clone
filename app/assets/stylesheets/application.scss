@@ -11346,6 +11346,18 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+
+  .collapse.navbar-collapse{
+    display: inline-block !important;
+  }
+  #navbarSupportedContent{
+    display: inline-block !important;
+  }
 }
+.collapse.navbar-collapse.custom-header.d-bl{
+  justify-content: space-between;
+  padding-left: 35px;
+}
+
 
 

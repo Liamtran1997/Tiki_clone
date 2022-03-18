@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   get "/categories/:category_id/products" , to: "categories#product_from_category", :as => "products_by_category"
 
   devise_for :users, controllers: {
-    registrations: 'registrations'
+    registrations: "registrations",
+    omniauth_callbacks: "users/omniauth_callbacks"
   }
+
   resources :categories
 
   resources :products do
