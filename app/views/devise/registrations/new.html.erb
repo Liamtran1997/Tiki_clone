@@ -1,28 +1,71 @@
-<div class="container">
-<center><h2>Sign up</h2></center>
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
-  <div class="form-inputs">
-    <%= f.input :name,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "name" }%>
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
- </div>
+  <div class="container">
+    <div class="card">
+      <div class="card-header text-center">
+        <h3><i class="fa-solid fa-address-card"></i>Sign Up</h3>
+      </div>
+      <div class="card-body text-center">
+        <form action="">
+          <div class="row">
+            <div class="form-group col-12  ">
+              <i class="fa-solid fa-user"></i>
+              <label for="">Name :</label>
+              <br>
+              <%= f.input :name,
+                          required: false,
+                          autofocus: true,
+                          input_html: { autocomplete: "name" }, label: false, placeholder: "UserName" %>
+            </div>
+          </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
+          <div class="row">
+            <div class="form-group col-12  ">
+              <i class="fa-solid fa-envelope"></i>
+              <label for="">Email :</label>
+              <br>
+              <%= f.input :email,
+                          required: false,
+                          autofocus: true,
+                          input_html: { autocomplete: "email" }, label: false, placeholder: "User Email" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-12  ">
+              <i class="fa-solid fa-key"></i>
+              <label for="">Password :</label>
+              <br>
+              <%= f.input :password,
+                          required: false,
+                          input_html: { autocomplete: "new-password" }, label: false, placeholder: "Password" %>
+              <small class="form-text text-muted">6 characters minimum</small>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-12  ">
+              <i class="fa-solid fa-key"></i>
+              <label for="">Password Confirmation :</label>
+              <br>
+              <%= f.input :password_confirmation,
+                          required: false,
+                          input_html: { autocomplete: "new-password" },
+                          label: false, placeholder: "Password Confirmation" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-12 text-center">
+              <%= f.button :submit, "Sign up", class: 'btn btn-primary' %>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-5">
+        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+        <%= render "devise/shared/links"%>
+      </div>
+    </div>
 <% end %>
-<%= render "devise/shared/links" %>
 </div>

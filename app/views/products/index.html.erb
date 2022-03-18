@@ -2,7 +2,7 @@
 <div class="container px-4 px-lg-5">
 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
   <%= render 'layouts/header' %>
-  <%= @products.each do |f| %>
+  <% @products.each do |f| %>
     <div class="col mb-5">
       <div class="card h-100">
         <!-- Product image-->
@@ -11,8 +11,10 @@
         <div class="card-body p-4">
           <div class="text-center">
             <!-- Product name-->
+
             <span class="icon"><%=f.impressionist_count %>
               <i class="fa fa-eye " aria-hidden="true"></i></span>
+
             <% if user_signed_in? %>
               <% if current_user.liked? f %>
                 <%= link_to unlike_product_path(f), method: :put, class: "unlike_product" do %>
@@ -55,8 +57,10 @@
       </div>
     </div>
   <%end%>
-  <%= will_paginate @products, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 </div>
+  <div class="text-center">
+    <%= will_paginate @products, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+  </div>
 </div>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

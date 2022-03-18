@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
-  # resources :line_items
   resources :orders
   resources :carts
   resources :line_items
+  get "/categories/:category_id/products" , to: "categories#product_from_category", :as => "products_by_category"
+
   devise_for :users, controllers: {
     registrations: 'registrations'
   }
+  resources :categories
+
   resources :products do
+    collection do
+      match 'search' => 'products#search', via: [:get, :post], as: :search
+    end
     resources :comments do
       member do
         put 'like', to: "comments#like"
@@ -19,7 +25,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :categories
   post "checkout/create", to: "checkout#create"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   #

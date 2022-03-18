@@ -4,6 +4,17 @@
 
 
 <header class="container">
+
+  <div class="container ">
+    <div class="row mb-3">
+        <% @categories.each do |category| %>
+            <div class="col-md-3">
+             <span><%= link_to category.name, products_by_category_path(category) %></span>
+            </div>
+        <% end %>
+    </div>
+  </div>
+
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -17,20 +28,28 @@
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
-      <div class="item active">
-        <%= image_tag("t.webp", style: "width:100%;height:auto;") %>
-      </div>
+        <div class="item active">
+          <a href="https://tiki.vn/khuyen-mai/flash-sale-dien-gia-dung?tmsx=421b1379-f681-4afb-af3c-26aac889ed84">
+          <%= image_tag("t.webp", style: "width:100%;height:auto;") %>
+          </a>
+        </div>
 
       <div class="item">
+        <a href="https://tiki.vn/tikingon?tmsx=543574a6-71f0-4aa8-8e42-1ce50987fe92">
         <%= image_tag("tiki1.webp", style: "width:100%;height:auto;") %>
+        </a>
       </div>
 
       <div class="item">
+        <a href="https://tiki.vn/khuyen-mai/do-xin-cho-be-deal-hoi-cho-me?tmsx=ee6dd68b-e6c6-479e-a60a-e1e6dc0766c9">
         <%= image_tag("tiki2.webp", style: "width:100%;height:auto;") %>
+        </a>
       </div>
 
       <div class="item">
+        <a href="https://tiki.vn/khuyen-mai/yeu-bep-nghien-nha-giam-den-50-100-chinh-hang?waypoint_id=brandpns&tmsx=2f7689af-a29c-45a5-a4f5-a4eb95ae45a3">
         <%= image_tag("tiki3.webp", style: "width:100%;height:auto;") %>
+        </a>
       </div>
 
       <div class="item">

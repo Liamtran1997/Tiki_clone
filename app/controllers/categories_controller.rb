@@ -10,8 +10,14 @@ class CategoriesController < ApplicationController
     @categories = Category.all
   end
 
+  def product_from_category
+    @category = Category.find(params[:category_id])
+    @products = @category.products.order("created_at desc").paginate(page: params[:page], per_page: 5)
+  end
+
   # GET /categories/1 or /categories/1.json
   def show
+    @category = Category.find(params[:id])
   end
 
   # GET /categories/new

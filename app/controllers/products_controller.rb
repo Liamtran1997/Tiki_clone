@@ -7,7 +7,8 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    @products = Product.order('created_at desc').paginate(page: params[:page], per_page: 5)
+    @search = Product.ransack(params[:q])
+    @products = @search.result.order("created_at desc").paginate(page: params[:page], per_page: 5)
   end
 
   # GET /products/1 or /products/1.json
@@ -83,6 +84,11 @@ class ProductsController < ApplicationController
     end
   end
 
+  def search
+    index
+    render :index
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -91,6 +97,8 @@ class ProductsController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
+
+
     def product_params
       params.require(:product).permit(:category_id, :name, :price, :unit, :image)
     end
